@@ -1,7 +1,3 @@
-/**
- * Created by shiyanlin
- * 810975746@qq.com
- */
 const React = require('react');
 const ReactDOM = require('react-dom');
 

@@ -1,8 +1,3 @@
-/**
- *  Created by shiyanlin
- *  810975746@qq.com
- */
-
 import React, { Component } from 'react'
 
 /*
