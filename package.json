@@ -1,0 +1,53 @@
+{
+  "name": "fontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "export NODE_ENV=test &&  webpack",
+    "pro-build": "export NODE_ENV=production &&  webpack",
+    "start": "webpack-dev-server --progress ",
+    "lint": "eslint --ext .js src"
+  },
+  "author": "shiyanlin",
+  "license": "ISC",
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "antd-mobile": "^1.1.3",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "bundle-loader": "^0.5.5",
+    "css-loader": "^0.27.3",
+    "es6-promise": "^4.1.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "fetch-ie8": "^1.5.0",
+    "file-loader": "^0.11.1",
+    "html-webpack-plugin": "^2.28.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.2",
+    "optimize-css-assets-webpack-plugin": "^1.3.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.0.0",
+    "react-router-dom": "^4.0.0",
+    "style-loader": "^0.16.1",
+    "svg-sprite-loader": "^0.3.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-import": "^1.1.1",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-react": "^6.10.3",
+    "pre-commit": "^1.2.2"
+  }
+}
