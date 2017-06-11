@@ -11,7 +11,6 @@ class HomeStore {
     @action
     fetchCarouselList = async () => {
         try {
-            if (this.isRefreshing) this.page = 1
             const url = '//property.test.liefengtech.com/api/finger/project/getHomeImages'
             const params = {
                 projectId:'8af41b8e53f37e4a0153f3a5a5d2000b'
@@ -21,7 +20,7 @@ class HomeStore {
 
             runInAction(() => {
                 this.isRefreshing = false
-                this.carouselList.push(...dataList);
+                this.carouselList = dataList;
             })
         } catch (error) {
             if (error.msg) {
