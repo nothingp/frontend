@@ -1,5 +1,8 @@
 
-import TestStore from './testStore'
+import TestStore from './testStore';
+import HomeStore from './homeStore';
+
 export default {
-    TestStore
+    TestStore,
+    HomeStore
 }

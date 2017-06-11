@@ -28,13 +28,17 @@ const PlaceHolder = props => (
 	><Link to="/list">Item</Link></div>
 );
 
-@inject('TestStore')
+@inject('HomeStore')
 @observer
 export default class Index extends React.Component{
-	componentDidMount () {
+	componentWillMount () {
+        //请求轮播图
+        this.props.HomeStore.fetchCarouselList();
 	}
 	render(){
-		console.log(this.props.TestStore);
+		for(var ojb of this.props.HomeStore.carouselList){
+			console.log(ojb);
+		}
         return(
             <div>
 				<Carousel className="carousel"

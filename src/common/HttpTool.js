@@ -15,7 +15,13 @@ const get = ({url, params = {}, timeout}) => {
     const urlStr = `${url}?${paramArr.join('&')}`
 
     if (timeout === undefined) {
-        return fetch(urlStr)
+        return fetch(urlStr,{
+            method: "GET",
+            headers: {
+                "openId": "cff1e1863382ab8766dc7aff2d84fa51cf612d8fd038b82c303d1410d1a25055158d6d5988c434952fb44c30108bb567"
+            },
+            body: `${paramArr.join('&')}`
+        })
     } else {
         return Promise.race([fetch(urlStr), delay(timeout)])
     }
