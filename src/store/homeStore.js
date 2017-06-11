@@ -1,5 +1,5 @@
 import {observable, computed, action, runInAction} from 'mobx'
-import {get} from '../common/HttpTool'
+import {getHomeImages} from '../service/propetryService'
 
 class HomeStore {
     @observable carouselList = [];
@@ -11,11 +11,7 @@ class HomeStore {
     @action
     fetchCarouselList = async () => {
         try {
-            const url = '//property.test.liefengtech.com/api/finger/project/getHomeImages'
-            const params = {
-                projectId:'8af41b8e53f37e4a0153f3a5a5d2000b'
-            }
-            const responseData = await get({url, params, timeout: 30}).then(res => res.json());
+            const responseData = await getHomeImages('8af41b8e53f37e4a0153f3a5a5d2000b');
             const {dataList} = responseData;
 
             runInAction(() => {

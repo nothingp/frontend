@@ -12,13 +12,25 @@ const pageConfig = require('./config/config.page.js');
 const proxyConfig = require('./config/config.proxy.js'); 
 
 // 引入dev-server配置文件
-const serverConfig = require('./config/config.server.js'); 
+const serverConfig = require('./config/config.server.js');
+
+// 引入dev-env配置文件
+const defineConfig = require('./config/config.env.js');
 
 // ant  使用Icon需要
 const svgDirs = [
     require.resolve('antd-mobile').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
     // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 2. 自己私人的 svg 存放目录
 ];
+
+const definePluginOptionKey = process.env.NODE_ENV ? process.env.NODE_ENV:'default';
+let defineContent = defineConfig[definePluginOptionKey];
+if (typeof defineContent === 'object') {
+    for (var i in defineContent) {
+        (typeof(defineContent[i]) === 'string' || typeof(defineContent[i] === 'object')) && (defineContent[i] = JSON.stringify(defineContent[i]));
+    }
+}
+defineContent['process.env']= {NODE_ENV: JSON.stringify(process.env.NODE_ENV)};
 
 const plugins = [
     // new ExtractTextPlugin('style.css'),     // 指定css文件名 打包成一个css
@@ -37,6 +49,7 @@ const plugins = [
 
     // css压缩
     new optimizeCssAssetsPlugin({}),
+    new webpack.DefinePlugin(defineContent),
 ]
 
 
