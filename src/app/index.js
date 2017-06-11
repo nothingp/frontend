@@ -1,6 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+import {observer, inject} from 'mobx-react'
+
 import { Carousel,Grid,Flex,WhiteSpace } from 'antd-mobile';
 
 import {Link} from 'react-router-dom';
@@ -26,11 +28,13 @@ const PlaceHolder = props => (
 	><Link to="/list">Item</Link></div>
 );
 
-
+@inject('TestStore')
+@observer
 export default class Index extends React.Component{
 	componentDidMount () {
 	}
 	render(){
+		console.log(this.props.TestStore);
         return(
             <div>
 				<Carousel className="carousel"

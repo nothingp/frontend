@@ -1,5 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+import { Provider } from "mobx-react";
+import stores from './store'
 
 // 引入标准Fetch及IE兼容依赖
 import 'whatwg-fetch';
@@ -36,15 +38,16 @@ class Init extends React.Component {
     }
     render() {
         return (
-                <Router >
+
+            <Router>
+                <Provider {...stores}>
                     <div>
                         <Route exact path="/" component={Index} />
                         <Route path="/list" component={List} />
                     </div>
-                </Router>
+                </Provider>
+            </Router>
         )
-    }
-    componentDidMount(){
     }
 }
 
