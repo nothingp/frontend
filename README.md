@@ -6,7 +6,7 @@
 * antd-mobile^1.1.3
 * react^15.5.4
 * react-router-dom^4.0.0
-
+* mobx^3.1.14",
 
 # 运行
 
