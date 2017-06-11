@@ -1,4 +1,5 @@
 import {observable, computed, action, runInAction} from 'mobx'
+import {get} from '../common/HttpTool'
 
 export default class TestStore {
     @observable feedList = [];
@@ -17,20 +18,20 @@ export default class TestStore {
                 category: this.categoryId,
                 per: 10
             }
-            // const responseData = await get({url, params, timeout: 30}).then(res => res.json())
-            // const {feeds, page, total_pages} = responseData
-            //
-            // runInAction(() => {
-            //     this.isRefreshing = false
-            //     this.errorMsg = ''
-            //     this.isNoMore = page >= total_pages
-            //
-            //     if (this.page === 1) {
-            //         this.feedList.replace(feeds)
-            //     } else {
-            //         this.feedList.splice(this.feedList.length, 0, ...feeds);
-            //     }
-            // })
+            const responseData = await get({url, params, timeout: 30}).then(res => res.json())
+            const {feeds, page, total_pages} = responseData
+
+            runInAction(() => {
+                this.isRefreshing = false
+                this.errorMsg = ''
+                this.isNoMore = page >= total_pages
+
+                if (this.page === 1) {
+                    this.feedList.replace(feeds)
+                } else {
+                    this.feedList.splice(this.feedList.length, 0, ...feeds);
+                }
+            })
         } catch (error) {
             if (error.msg) {
                 this.errorMsg = error.msg
